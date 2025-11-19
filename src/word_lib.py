@@ -73,6 +73,14 @@ def clean_word(word: str) -> str:
         'hello'
         >>> clean_word('World...')
         'world'
+        >>> clean_word("!!!")
+        ''
+        >>> clean_word("H3ll0!!!")
+        'h3ll0'
+        >>> clean_word("...Python??")
+        'python'
+        >>> clean_word("NeO")
+        'neo'
 
     See:
         https://docs.python.org/3/library/stdtypes.html#str.isalnum
@@ -84,7 +92,19 @@ def clean_word(word: str) -> str:
     Returns:
         str: the word without punctuation
     """
-    pass
+    if len(word) == 0:
+        return ""
+    
+    first = word[0]
+    rest = word[1:]
+
+    if first.isalnum():
+        return first.lower() + clean_word(rest)
+    
+    return clean_word(rest)
+
+
+    
 
 
 # Just running this file will run the doctests
