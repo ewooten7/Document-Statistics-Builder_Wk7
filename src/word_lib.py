@@ -49,7 +49,19 @@ def count_vowels(word: str) -> int:
     Returns:
         int: the number of vowels in the word
     """
-    pass
+    if word == "":
+        return 0
+    
+    first = word[0].lower()
+    rest = word[1:]
+
+    vowels = "aeiou"
+
+    if first in vowels:
+        return 1 + count_vowels(rest)
+    
+    return count_vowels(rest)
+    
 
 
 def clean_word(word: str) -> str:
