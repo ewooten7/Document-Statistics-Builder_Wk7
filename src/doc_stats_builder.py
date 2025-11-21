@@ -71,6 +71,17 @@ def get_number_words(lines: tuple) -> int:
         2
         >>> get_number_words(('Aloha!', '-', 'World'))
         2
+        >>> get_number_words(('Hello!!!', '...'))
+        1
+        >>> get_number_words(('mañana', 'niño'))
+        2
+        >>> get_number_words(('🔥🔥🔥',))
+        0
+        >>> get_number_words(('Supercalifragilistic', 'expialidocious', 'even', 'though' , 'the', 'sound', 'of', 'it', 'sounds', 'quite', 'atrocious'))
+        11
+        >>> get_number_words(('!!!!!!!!!!!!'))
+        0
+
 
     Args:
         lines (tuple): the lines of the document
@@ -78,7 +89,30 @@ def get_number_words(lines: tuple) -> int:
     Returns:
         int: the number of words in the document
     """
-    pass
+    count = 0
+
+    for line in lines:
+        words = line.split()
+        for word in words:
+            w_cleaned = clean_word(word)
+            if w_cleaned != '':
+                count += 1
+
+    return count
+
+
+# Thinking:
+"""
+Seemed straightforward at first, except I kept getting an error on line 53 with test failing. 
+Turns out, I forgot to add the return statement! This makes my function implicitly return NONE.
+Hence: Failed example:
+    get_number_words(('Aloha!', '-', 'World'))
+Expected:
+    2
+Got nothing.
+
+Also, I'm getting bolder with edge cases. Why not use emojis?
+"""
 
 
 def get_vowel_count(lines: tuple) -> int:
