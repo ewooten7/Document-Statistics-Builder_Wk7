@@ -173,18 +173,18 @@ def get_word_palindromes(lines: tuple) -> int:
         0
 
         >>> get_word_palindromes(('An old silent pond...', 'A frog jumps into the pond—', 'Splash! Silence again.', '- Matsuo Basho'))
-        1
+        0
 
         >>> get_word_palindromes(('raceCar', 'kayak!', 'sator arepo tenet opera rotas!'))
         3
 
         >>> get_word_palindromes(('A b c d e f g h i j k elemeno p',))
-        12
+        0
 
         >>> get_word_palindromes(('Super Mario Racecar on sale!',))
         1
 
-        >>> get_word_palindromes(('!!@#&%$@!*()@#&!@'))
+        >>> get_word_palindromes(('!!@#&%$@!', '*()@#&!@'))
         0
 
     Args:
@@ -196,10 +196,10 @@ def get_word_palindromes(lines: tuple) -> int:
     count = 0
 
     for line in lines:
-        words = line.split()
-        for word in words:
-            w_cleaned = clean_word(word)
-            if w_cleaned != '' and is_palindrome(w_cleaned):
+        for word in line.split():
+            cleaned = clean_word(word)
+
+            if len(cleaned) > 1 and is_palindrome(cleaned):
                 count += 1
 
     return count
@@ -237,8 +237,9 @@ def get_sentence_palindromes(lines: tuple) -> int:
     count = 0
 
     for line in lines:
-        w_cleaned = clean_word(line)
-        if len(w_cleaned) > 1 and is_palindrome(w_cleaned):
+        cleaned = clean_word(line)
+
+        if len(cleaned) > 1 and is_palindrome(cleaned):
             count += 1
 
     return count
