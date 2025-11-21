@@ -68,6 +68,14 @@ def count_vowels(word: str) -> int:
         5
         >>> count_vowels('AEIOU')
         5
+        >>> count_vowels('GonFreecs')
+        3
+        >>> count_vowels('KilluaZoldyck')
+        4
+        >>> count_vowels('LeorioPaladinight')
+        8
+
+
 
     Args:
         word (str): the word to check
@@ -77,7 +85,7 @@ def count_vowels(word: str) -> int:
     """
     if word == "":
         return 0
-    
+
     first = word[0].lower()
     rest = word[1:]
 
@@ -85,9 +93,8 @@ def count_vowels(word: str) -> int:
 
     if first in vowels:
         return 1 + count_vowels(rest)
-    
+
     return count_vowels(rest)
-    
 
 
 def clean_word(word: str) -> str:
