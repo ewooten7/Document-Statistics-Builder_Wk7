@@ -94,17 +94,14 @@ def clean_word(word: str) -> str:
     """
     if len(word) == 0:
         return ""
-    
+
     first = word[0]
     rest = word[1:]
 
     if first.isalnum():
         return first.lower() + clean_word(rest)
-    
+
     return clean_word(rest)
-
-
-    
 
 
 # Just running this file will run the doctests
