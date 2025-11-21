@@ -219,13 +219,29 @@ def get_sentence_palindromes(lines: tuple) -> int:
         >>> get_sentence_palindromes(('A raceCar', 'A kayak!', 'sator arepo tenet opera rotas!'))
         1
 
+        >>> get_sentence_palindromes(('A'))
+        1
+
+        >>> get_sentence_palindromes(('REfeR', 'to', 'Me'))
+        1
+
+        >>> get_sentence_palindromes(('CiVic', 'Duties'))
+        1
+
     Args:
         lines (tuple): the lines of the document
 
     Returns:
         int: the number of palindromes in the document
     """
-    pass
+    count = 0
+
+    for line in lines:
+        w_cleaned = clean_word(line)
+        if w_cleaned != '' and is_palindrome(w_cleaned):
+            count += 1
+
+    return count
 
 
 # just running the file will automatically run doctest
