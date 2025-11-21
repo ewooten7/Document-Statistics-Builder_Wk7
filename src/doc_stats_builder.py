@@ -243,7 +243,8 @@ def get_sentence_palindromes(lines: tuple) -> int:
 
     return count
 
-#Thinking
+
+# Thinking
 """
 This was a good one! The autograder got me here: "4.0) Approaching: Tests the number of palindromes that exist on a word basis."
 On line 241, I changed, w_cleaned != '', to a better if len(w_cleaned) > 1, meaning that the resulted clean should be at LEAST 2 characters long before I consider it a valid “word” for palindrome checking.
