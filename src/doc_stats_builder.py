@@ -126,13 +126,42 @@ def get_vowel_count(lines: tuple) -> int:
         >>> get_vowel_count(('An old silent pond...', 'A frog jumps into the pond—', 'Splash! Silence again.', '- Matsuo Basho'))
         24
 
+        >>> get_vowel_count(("I'm gonna make him an offer he can't refuse.",))
+        14
+
+        >>> get_vowel_count(("E.T. phone home",))
+        5
+
+        >>> get_vowel_count(('Oh? You’re approaching me? Instead of running away, you’re coming right to me? Even though your grandfather, Joseph, told you the secret of The World, like an exam student scrambling to finish the problems on an exam until the last moments before the chime?'))
+        76
+
+        >>> get_vowel_count(('I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character'))
+        49
+
     Args:
         lines (tuple): the lines of the document
 
     Returns:
         int: the number of vowels in the document
     """
-    pass
+    total = 0
+
+    for line in lines:
+        words = line.split()
+        for word in words:
+            w_cleaned = clean_word(word)
+            total += count_vowels(w_cleaned)
+
+    return total
+
+
+# Thinking
+"""
+Another case: also thought this was easy, but ran into another syntax error:
+"UnboundLocalError: cannot access local variable 'total' where it is not associated with a value"
+This meant I referenced a local variable (total) WITHOUT first defining it OUTSIDE the function
+(I did this with the others with "count", but total forgot again to put it here).
+"""
 
 
 def get_word_palindromes(lines: tuple) -> int:
@@ -149,13 +178,31 @@ def get_word_palindromes(lines: tuple) -> int:
         >>> get_word_palindromes(('raceCar', 'kayak!', 'sator arepo tenet opera rotas!'))
         3
 
+        >>> get_word_palindromes(('A b c d e f g h i j k elemeno p',))
+        12
+
+        >>> get_word_palindromes(('Super Mario Racecar on sale!',))
+        1
+
+        >>> get_word_palindromes(('!!@#&%$@!*()@#&!@'))
+        0
+
     Args:
         lines (tuple): the lines of the document
 
     Returns:
         int: the number of palindromes in the document
     """
-    pass
+    count = 0
+
+    for line in lines:
+        words = line.split()
+        for word in words:
+            w_cleaned = clean_word(word)
+            if w_cleaned != '' and is_palindrome(w_cleaned):
+                count += 1
+
+    return count
 
 
 def get_sentence_palindromes(lines: tuple) -> int:
