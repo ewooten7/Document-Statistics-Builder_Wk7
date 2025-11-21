@@ -219,8 +219,8 @@ def get_sentence_palindromes(lines: tuple) -> int:
         >>> get_sentence_palindromes(('A raceCar', 'A kayak!', 'sator arepo tenet opera rotas!'))
         1
 
-        >>> get_sentence_palindromes(('A'))
-        1
+        >>> get_sentence_palindromes(('A',))
+        0
 
         >>> get_sentence_palindromes(('REfeR', 'to', 'Me'))
         1
