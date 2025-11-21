@@ -20,6 +20,15 @@ def is_palindrome(word: str) -> bool:
         True
         >>> is_palindrome('hello')
         False
+        >>> is_palindrome('girafarig')
+        True
+        >>> is_palindrome('farigaraf')
+        True
+        >>> is_palindrome('PizzaTime')
+        False
+        >>> is_palindrome('AcecA')
+        True
+
 
     Args:
         word (str): the word to check
@@ -27,7 +36,24 @@ def is_palindrome(word: str) -> bool:
     Returns:
         bool: True if the word is a palindrome, False otherwise
     """
-    pass
+    # Base: empty string of single character
+    if len(word) <= 1:
+        return True
+
+    # False: 1st and last characters DON'T Match
+    if word[0] != word[-1]:
+        return False
+
+    # Rec: STRIP outer and check REST
+    return is_palindrome(word[-1:1])
+
+
+# Thinking:
+"""
+    EQ: Is there a catch-all function I can try to write that will help me solve this solution? 
+    EQ: What is a 'palindrome', and how to represent in Python?
+    Asking myself this helped me create different answers, which I had to drill into to consider how to represent in code. Recursion never fails to surprise me with its efficiency.
+"""
 
 
 def count_vowels(word: str) -> int:
