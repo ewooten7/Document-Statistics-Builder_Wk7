@@ -31,6 +31,17 @@ def get_number_lines(lines: tuple) -> int:
     Examples:
         >>> get_number_lines(('Hello', 'World'))
         2
+        >>> get_number_lines(('Goodbye', 'World'))
+        2
+        >>> get_number_lines(('My', 'name', 'is', 'Yoshikage', 'Kira'))
+        5
+        >>> get_number_lines(('こんにちは', '世界'))
+        2
+        >>> get_number_lines(('TUNG TUNG TUNG TUNG TUNG TUNG SAHUR',))
+        1
+        >>> get_number_lines(('Piplup', 'Lv5', 'Ability:Torrent'))
+        3
+
 
     Args:
         lines (tuple): the lines of the document
@@ -38,7 +49,15 @@ def get_number_lines(lines: tuple) -> int:
     Returns:
         int: the number of lines in the document
     """
-    pass
+    return len(lines)
+
+
+# Thinking:
+"""
+This was super easy. AND I am getting much better with making edge cases!
+I never considered using other languages for doctests before, and this one
+is particually relevant in trying this out! I think the haiku from Basho made me think about this. I used to read his works in middle school!
+"""
 
 
 def get_number_words(lines: tuple) -> int:
